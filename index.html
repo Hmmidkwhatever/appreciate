@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages for Amy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffebf2; /* Pinkish background */
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #message-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #message {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #ff007f; /* Pinkish button color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Heart-shaped popup */
+        #popup-heart {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff007f; /* Pinkish popup background */
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Apology popup */
+        #popup-apology {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff007f; /* Pinkish popup background */
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="message-container">
+        <h1>Dear Amy,</h1>
+        <p>You are the love of my life, and I cherish every moment with you. Whenever you feel sad, remember:</p>
+        <div id="message"></div>
+    </div>
+
+    <button id="click-button">Click for More</button>
+    <button id="miss-button">I Miss You</button>
+    <button id="apology-button">Apology</button>
+
+    <!-- Heart-shaped popup -->
+    <div id="popup-heart" onclick="closePopup('popup-heart')">I miss you too</div>
+
+    <!-- Apology popup -->
+    <div id="popup-apology" onclick="closePopup('popup-apology')"></div>
+
+    <script>
+        const messages = [
+            // Add your appreciation messages for your girlfriend here
+            "Your smile brightens my day, and my love for you grows stronger every moment.",
+            "You make every day a special one with your presence.",
+            "Don't lose hope; our love will always light the way.",
+            "Your kindness and beauty are unmatched.",
+            "You are the strength in my life; your love is my anchor.",
+            "Your presence is a blessing that I cherish every day.",
+            "You are the one who holds the key to my heart.",
+            "You inspire me with your love and passion.",
+            "Believe in our love, because I believe in us.",
+            "Your laughter is the music of my heart.",
+            "You are my best friend and my true love.",
+            "Your love is the most precious gift I've ever received.",
+            "You bring warmth and happiness into my life every day.",
+            "You are the light in my darkest hours.",
+            "You are the love story I've always dreamed of.",
+            "Your love completes me in every way.",
+        ];
+
+        const apologyMessages = [
+            // Add your apology messages here
+            "I'm deeply sorry for any mistakes I've made. You mean the world to me.",
+            "I apologize for any hurt I may have caused. Please forgive me.",
+            "I'm sorry for any misunderstandings. My love for you is unwavering.",
+            "Please accept my sincere apologies. You are my everything.",
+            "I regret any actions that may have hurt you. I love you deeply.",
+            "I'm sorry for any misunderstandings, my love. Please forgive me and stay with me. ❤️"
+        ];
+
+        const messageContainer = document.getElementById("message");
+        let currentIndex = 0;
+
+        function displayMessage() {
+            messageContainer.textContent = messages[currentIndex];
+            currentIndex = (currentIndex + 1) % messages.length;
+        }
+
+        const clickButton = document.getElementById("click-button");
+        clickButton.addEventListener("click", () => {
+            displayMessage();
+        });
+
+        const missButton = document.getElementById("miss-button");
+        missButton.addEventListener("click", () => {
+            showPopup('popup-heart');
+        });
+
+        const apologyButton = document.getElementById("apology-button");
+        apologyButton.addEventListener("click", () => {
+            showPopup('popup-apology');
+            const popupApology = document.getElementById("popup-apology");
+            popupApology.textContent = apologyMessages[Math.floor(Math.random() * apologyMessages.length)];
+
+        });
+
+        function showPopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = "block";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 10000); 
+        }
+
+        function closePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = "none";
+        }
+
+        displayMessage(); 
+    </script>
+</body>
+</html>
